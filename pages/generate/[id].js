@@ -4,11 +4,11 @@ import Article from '../../components/PdfComponent/Article';
 import PDFLayout from '../../components/PdfComponent/PdfLayout';
 import pdfHelper from '../../lib/pdfHelper';
 import { Provider } from 'react-redux'
-//import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import { getAreaArray, getInspectorDetails } from '../../lib/getInspection';
 
-//const store = createStore(() => [], {}, applyMiddleware());
+const store = createStore(() => [], {}, applyMiddleware());
 
 import middleware from "../../middleware/middleware";
 
@@ -30,7 +30,9 @@ export async function getServerSideProps(context) {
     //     <PDFLayout><Article data={p} inpectorDetails={inspectorDetails} /></PDFLayout>
     // </Provider>
         const buffer = await pdfHelper.componentToPDFBuffer(
-            <div><p>Dowloading pdf111</p></div>
+            <Provider store={store}>
+         <PDFLayout><Article data={p} inpectorDetails={inspectorDetails} /></PDFLayout>
+     </Provider>
         );
         
         // with this header, your browser will prompt you to download the file

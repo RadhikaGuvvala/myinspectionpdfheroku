@@ -878,12 +878,12 @@ class InspectionCenterOne extends Component {
                               href={`/generate/${data._id}`}
                             >Download PDF</a>
                             </Button>
-                            <Button
+                            {/* <Button
                                 color="warning"
                                 
                               >
                                 <a href="/api/getApi">Downloadss PDF</a>;
-                              </Button>
+                              </Button> */}
                             </div>
                           </GridItem>
                         </GridContainer>
